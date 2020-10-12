@@ -1,0 +1,267 @@
+{
+  "name": "AWS-ECS",
+  "description": "Amazon AWS ECS",
+  "type": "executer",
+  "main": "app.js",
+  "execProgram": "node",
+  "exposeRoute": false,
+  "imgUrl": "logo.png",
+  "version": "1.0.0",
+  "settings" : [
+    {
+      "name": "accessKeyId",
+      "viewName": "Access key",
+      "type": "vault"
+    },
+    {
+      "name": "secretAccessKey",
+      "viewName": "Secret key",
+      "type": "vault"
+    }
+  ],
+  "methods": [
+    {
+      "name": "runTask",
+      "viewName": "Run Task",
+      "params": [
+        {
+          "name": "accessKeyId",
+          "viewName": "Access key",
+          "type": "vault"
+        },
+        {
+          "name": "secretAccessKey",
+          "viewName": "Secret key",
+          "type": "vault"
+        },
+        {
+          "name": "REGION",
+          "viewName": "Region",
+          "type": "options",
+          "options": [
+            {
+              "id": "us-east-1",
+              "name": "US East (N. Virginia)"
+            },
+            {
+              "id": "us-west-1",
+              "name": "US West (N. California)"
+            },
+            {
+              "id": "us-west-2",
+              "name": "US West (Oregon)"
+            },
+            {
+              "id": "ap-southeast-1",
+              "name": "Asia Pacific (Singapore)"
+            },
+            {
+              "id": "ap-southeast-2",
+              "name": "Asia Pacific (Sydney)"
+            },
+            {
+              "id": "ap-northeast-1",
+              "name": "Asia Pacific (Tokyo)"
+            },
+            {
+              "id": "eu-west-1",
+              "name": "EU (Ireland)"
+            },
+            {
+              "id": "sa-east-1",
+              "name": "South America (São Paulo)"
+            },
+            {
+              "id": "eu-central-1",
+              "name": "EU (Frankfurt)"
+            }
+          ]
+        },
+        {
+          "name": "cluster",
+          "viewName": "Cluster",
+          "type": "string"
+        },
+        {
+          "name": "taskDefinition",
+          "viewName": "Task Definition",
+          "type": "string"
+        },
+        {
+          "name": "launchType",
+          "viewName": "Launch Type",
+          "type": "options",
+          "options" : [
+            {
+              "id": "FARGATE",
+              "name": "FARGATE"
+            },
+            {
+              "id": "EC2",
+              "name": "EC2"
+            }
+          ]
+        },
+        {
+          "name": "subnets",
+          "viewName": "Subnets (Array)",
+          "type": "string"
+        },
+        {
+          "name": "securityGroups",
+          "viewName": "Security Groups",
+          "type": "string"
+        },
+        {
+          "name": "assignPublicIp",
+          "viewName": "Assign Public IP",
+          "type": "options",
+          "options" : [
+            {
+              "id": "ENABLED",
+              "name": "ENABLED"
+            },
+            {
+              "id": "DISABLED",
+              "name": "DISABLED"
+            }
+          ]
+        }
+        
+      ]
+    },
+    {
+      "name": "describeTasks",
+      "viewName": "Describe Tasks",
+      "params": [
+        {
+          "name": "accessKeyId",
+          "viewName": "Access key",
+          "type": "vault"
+        },
+        {
+          "name": "secretAccessKey",
+          "viewName": "Secret key",
+          "type": "vault"
+        },
+        {
+          "name": "REGION",
+          "viewName": "Region",
+          "type": "options",
+          "options": [
+            {
+              "id": "us-east-1",
+              "name": "US East (N. Virginia)"
+            },
+            {
+              "id": "us-west-1",
+              "name": "US West (N. California)"
+            },
+            {
+              "id": "us-west-2",
+              "name": "US West (Oregon)"
+            },
+            {
+              "id": "ap-southeast-1",
+              "name": "Asia Pacific (Singapore)"
+            },
+            {
+              "id": "ap-southeast-2",
+              "name": "Asia Pacific (Sydney)"
+            },
+            {
+              "id": "ap-northeast-1",
+              "name": "Asia Pacific (Tokyo)"
+            },
+            {
+              "id": "eu-west-1",
+              "name": "EU (Ireland)"
+            },
+            {
+              "id": "sa-east-1",
+              "name": "South America (São Paulo)"
+            },
+            {
+              "id": "eu-central-1",
+              "name": "EU (Frankfurt)"
+            }
+          ]
+        },
+        {
+          "name": "cluster",
+          "viewName": "Cluster",
+          "type": "string"
+        },
+        {
+          "name": "tasks",
+          "viewName": "Tasks IDs",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "listTasks",
+      "viewName": "List Tasks",
+      "params": [
+        {
+          "name": "accessKeyId",
+          "viewName": "Access key",
+          "type": "vault"
+        },
+        {
+          "name": "secretAccessKey",
+          "viewName": "Secret key",
+          "type": "vault"
+        },
+        {
+          "name": "REGION",
+          "viewName": "Region",
+          "type": "options",
+          "options": [
+            {
+              "id": "us-east-1",
+              "name": "US East (N. Virginia)"
+            },
+            {
+              "id": "us-west-1",
+              "name": "US West (N. California)"
+            },
+            {
+              "id": "us-west-2",
+              "name": "US West (Oregon)"
+            },
+            {
+              "id": "ap-southeast-1",
+              "name": "Asia Pacific (Singapore)"
+            },
+            {
+              "id": "ap-southeast-2",
+              "name": "Asia Pacific (Sydney)"
+            },
+            {
+              "id": "ap-northeast-1",
+              "name": "Asia Pacific (Tokyo)"
+            },
+            {
+              "id": "eu-west-1",
+              "name": "EU (Ireland)"
+            },
+            {
+              "id": "sa-east-1",
+              "name": "South America (São Paulo)"
+            },
+            {
+              "id": "eu-central-1",
+              "name": "EU (Frankfurt)"
+            }
+          ]
+        },
+        {
+          "name": "cluster",
+          "viewName": "Cluster",
+          "type": "string"
+        }
+      ]
+    }
+  ]
+}
