@@ -24,7 +24,7 @@ This method calls ECS [runTask](https://docs.aws.amazon.com/AWSJavaScriptSDK/lat
 
 **Description**
 
-This method calls ECS [describeTasks](* https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/ECS.html#describeTasks-property)
+This method calls ECS [describeTasks](https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/ECS.html#describeTasks-property)
 
 **Parameters**
 1. **Access Key** - This is a parameter taken from the vault to access AWS
