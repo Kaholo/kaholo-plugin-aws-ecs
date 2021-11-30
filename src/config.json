@@ -1,133 +1,516 @@
 {
   "name": "AWS-ECS",
-  "description": "Amazon AWS ECS",
   "type": "executer",
-  "main": "app.js",
-  "execProgram": "node",
-  "exposeRoute": false,
   "imgUrl": "logo.png",
-  "version": "1.0.0",
-  "settings" : [
+  "execProgram": "node",
+  "main": "app.js",
+  "version": "2.0.0",
+  "description": "Kaholo plugin for integration with AWS ECS API.",
+  "category": "CONTAINERS",
+  "keywords": ["aws", "amazon", "code", "cloud", "cluster", "vm", "cli", "instance", "service", "elastic", "container", "compute"],
+  "settings":[
     {
       "name": "accessKeyId",
-      "viewName": "Access key",
-      "type": "vault"
+      "viewName": "Access Key ID",
+      "type": "vault",
+      "description": "The default AWS Access Key ID to use for authentication.",
+      "placeholder": "AKIAIOSFODNN7EXAMPLE",
+      "learnUrl": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey"
     },
     {
-      "name": "secretAccessKey",
-      "viewName": "Secret key",
-      "type": "vault"
+      "name": "accessKeySecret",
+      "viewName": "Access Key Secret",
+      "type": "vault",
+      "description": "The default AWS Access Key secret to use for authentication.",
+      "placeholder": "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
+      "learnUrl": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey"
+    },
+    {
+      "name": "region",
+      "viewName": "Region",
+      "type": "string",
+      "description": "The ID of the default region to make requests on.",
+      "placeholder": "us-east-2",
+      "learnUrl": "https://aws.amazon.com/about-aws/global-infrastructure/regions_az/"
     }
   ],
   "methods": [
+    {
+      "name": "registerTaskJson",
+      "viewName": "Register Task Definition From JSON",
+      "params": [
+        {
+          "name": "accessKeyId",
+          "viewName": "Access Key ID",
+          "type": "vault",
+          "description": "This is a parameter taken from the vault to access AWS",
+          "placeholder": "AKIAIOSFODNN7EXAMPLE",
+          "learnUrl": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey"
+        },
+        {
+          "name": "accessKeySecret",
+          "viewName": "Access Key Secret",
+          "type": "vault",
+          "description": "This is a parameter taken from the vault to access AWS",
+          "placeholder": "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
+          "learnUrl": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey"
+        },
+        {
+          "name": "region",
+          "viewName": "Region",
+          "type": "autocomplete",
+          "autocompleteType": "function",
+          "functionName": "listRegionsAuto",
+          "description": "Make the request in the specified region.",
+          "placeholder": "us-east-2",
+          "learnUrl": "https://aws.amazon.com/about-aws/global-infrastructure/regions_az/"
+        },
+        {
+          "name": "taskDefenitionJson",
+          "viewName": "Task Definition JSON",
+          "type": "text",
+          "description": "Create the task according to the parameters in the specified JSON. Can be provided either as a local path of a file on the agent, or pass as JS object from code.",
+          "learnUrl": "https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_RegisterTaskDefinition.html"
+        }
+      ]
+    },
+    {
+      "name": "createServiceJson",
+      "viewName": "Create Service From JSON",
+      "params": [
+        {
+          "name": "accessKeyId",
+          "viewName": "Access Key ID",
+          "type": "vault",
+          "description": "This is a parameter taken from the vault to access AWS",
+          "placeholder": "AKIAIOSFODNN7EXAMPLE",
+          "learnUrl": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey"
+        },
+        {
+          "name": "accessKeySecret",
+          "viewName": "Access Key Secret",
+          "type": "vault",
+          "description": "This is a parameter taken from the vault to access AWS",
+          "placeholder": "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
+          "learnUrl": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey"
+        },
+        {
+          "name": "region",
+          "viewName": "Region",
+          "type": "autocomplete",
+          "autocompleteType": "function",
+          "functionName": "listRegionsAuto",
+          "description": "Make the request in the specified region.",
+          "placeholder": "us-east-2",
+          "learnUrl": "https://aws.amazon.com/about-aws/global-infrastructure/regions_az/"
+        },
+        {
+          "name": "serviceJson",
+          "viewName": "Service JSON",
+          "type": "text",
+          "description": "Create the service according to the parameters in the specified JSON. Can be provided either as a local path of a file on the agent, or pass as JS object from code.",
+          "learnUrl": "https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_CreateService.html"
+        }
+      ]
+    },
+    {
+      "name": "updateServiceJson",
+      "viewName": "Update Service From JSON",
+      "params": [
+        {
+          "name": "accessKeyId",
+          "viewName": "Access Key ID",
+          "type": "vault",
+          "description": "This is a parameter taken from the vault to access AWS",
+          "placeholder": "AKIAIOSFODNN7EXAMPLE",
+          "learnUrl": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey"
+        },
+        {
+          "name": "accessKeySecret",
+          "viewName": "Access Key Secret",
+          "type": "vault",
+          "description": "This is a parameter taken from the vault to access AWS",
+          "placeholder": "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
+          "learnUrl": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey"
+        },
+        {
+          "name": "region",
+          "viewName": "Region",
+          "type": "autocomplete",
+          "autocompleteType": "function",
+          "functionName": "listRegionsAuto",
+          "description": "Make the request in the specified region.",
+          "placeholder": "us-east-2",
+          "learnUrl": "https://aws.amazon.com/about-aws/global-infrastructure/regions_az/"
+        },
+        {
+          "name": "serviceJson",
+          "viewName": "Service JSON",
+          "type": "text",
+          "description": "Update the service according to the parameters in the specified JSON. Can be provided either as a local path of a file on the agent, or pass as JS object from code.",
+          "learnUrl": "https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_UpdateService.html"
+        }
+      ]
+    },
+    {
+      "name": "createClusterJson",
+      "viewName": "Create Cluster From JSON",
+      "params": [
+        {
+          "name": "accessKeyId",
+          "viewName": "Access Key ID",
+          "type": "vault",
+          "description": "This is a parameter taken from the vault to access AWS",
+          "placeholder": "AKIAIOSFODNN7EXAMPLE",
+          "learnUrl": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey"
+        },
+        {
+          "name": "accessKeySecret",
+          "viewName": "Access Key Secret",
+          "type": "vault",
+          "description": "This is a parameter taken from the vault to access AWS",
+          "placeholder": "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
+          "learnUrl": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey"
+        },
+        {
+          "name": "region",
+          "viewName": "Region",
+          "type": "autocomplete",
+          "autocompleteType": "function",
+          "functionName": "listRegionsAuto",
+          "description": "Make the request in the specified region.",
+          "placeholder": "us-east-2",
+          "learnUrl": "https://aws.amazon.com/about-aws/global-infrastructure/regions_az/"
+        },
+        {
+          "name": "clusterJson",
+          "viewName": "Cluster JSON",
+          "type": "text",
+          "description": "Create the cluster according to the parameters in the specified JSON. Can be provided either as a local path of a file on the agent, or pass as JS object from code.",
+          "learnUrl": "https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_CreateCluster.html"
+        }
+      ]
+    },
+    {
+      "name": "createBasicCluster",
+      "viewName": "Create Basic Cluster",
+      "params": [
+        {
+          "name": "accessKeyId",
+          "viewName": "Access Key ID",
+          "type": "vault",
+          "description": "This is a parameter taken from the vault to access AWS",
+          "placeholder": "AKIAIOSFODNN7EXAMPLE",
+          "learnUrl": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey"
+        },
+        {
+          "name": "accessKeySecret",
+          "viewName": "Access Key Secret",
+          "type": "vault",
+          "description": "This is a parameter taken from the vault to access AWS",
+          "placeholder": "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
+          "learnUrl": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey"
+        },
+        {
+          "name": "region",
+          "viewName": "Region",
+          "type": "autocomplete",
+          "autocompleteType": "function",
+          "functionName": "listRegionsAuto",
+          "description": "Make the request in the specified region.",
+          "placeholder": "us-east-2",
+          "learnUrl": "https://aws.amazon.com/about-aws/global-infrastructure/regions_az/"
+        },
+        {
+          "name": "name",
+          "viewName": "Name",
+          "type": "string",
+          "description": "The name to give to the new cluster.",
+          "learnUrl": "https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_CreateCluster.html"
+        }
+      ]
+    },
+    {
+      "name": "putClusterCapacityProviders",
+      "viewName": "Put Cluster Capacity Providers From JSON",
+      "params": [
+        {
+          "name": "accessKeyId",
+          "viewName": "Access Key ID",
+          "type": "vault",
+          "description": "This is a parameter taken from the vault to access AWS",
+          "placeholder": "AKIAIOSFODNN7EXAMPLE",
+          "learnUrl": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey"
+        },
+        {
+          "name": "accessKeySecret",
+          "viewName": "Access Key Secret",
+          "type": "vault",
+          "description": "This is a parameter taken from the vault to access AWS",
+          "placeholder": "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
+          "learnUrl": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey"
+        },
+        {
+          "name": "region",
+          "viewName": "Region",
+          "type": "autocomplete",
+          "autocompleteType": "function",
+          "functionName": "listRegionsAuto",
+          "description": "Make the request in the specified region.",
+          "placeholder": "us-east-2",
+          "learnUrl": "https://aws.amazon.com/about-aws/global-infrastructure/regions_az/"
+        },
+        {
+          "name": "clusterCPJson",
+          "viewName": "Cluster Capacity Providers JSON",
+          "type": "text",
+          "description": "Update the capacity provider of the cluster according to the specified parameters. Can be provided either as a local path of a file on the agent, or pass as JS object from code.",
+          "learnUrl": "https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_PutClusterCapacityProviders.html"
+        }
+      ]
+    },
     {
       "name": "runTask",
       "viewName": "Run Task",
       "params": [
         {
           "name": "accessKeyId",
-          "viewName": "Access key",
-          "type": "vault"
+          "viewName": "Access Key ID",
+          "type": "vault",
+          "description": "This is a parameter taken from the vault to access AWS",
+          "placeholder": "AKIAIOSFODNN7EXAMPLE",
+          "learnUrl": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey"
         },
         {
-          "name": "secretAccessKey",
-          "viewName": "Secret key",
-          "type": "vault"
+          "name": "accessKeySecret",
+          "viewName": "Access Key Secret",
+          "type": "vault",
+          "description": "This is a parameter taken from the vault to access AWS",
+          "placeholder": "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
+          "learnUrl": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey"
         },
         {
-          "name": "REGION",
+          "name": "region",
           "viewName": "Region",
-          "type": "options",
-          "options": [
-            {
-              "id": "us-east-1",
-              "name": "US East (N. Virginia)"
-            },
-            {
-              "id": "us-west-1",
-              "name": "US West (N. California)"
-            },
-            {
-              "id": "us-west-2",
-              "name": "US West (Oregon)"
-            },
-            {
-              "id": "ap-southeast-1",
-              "name": "Asia Pacific (Singapore)"
-            },
-            {
-              "id": "ap-southeast-2",
-              "name": "Asia Pacific (Sydney)"
-            },
-            {
-              "id": "ap-northeast-1",
-              "name": "Asia Pacific (Tokyo)"
-            },
-            {
-              "id": "eu-west-1",
-              "name": "EU (Ireland)"
-            },
-            {
-              "id": "sa-east-1",
-              "name": "South America (São Paulo)"
-            },
-            {
-              "id": "eu-central-1",
-              "name": "EU (Frankfurt)"
-            }
-          ]
+          "type": "autocomplete",
+          "autocompleteType": "function",
+          "functionName": "listRegionsAuto",
+          "description": "Make the request in the specified region.",
+          "placeholder": "us-east-2",
+          "learnUrl": "https://aws.amazon.com/about-aws/global-infrastructure/regions_az/"
         },
         {
           "name": "cluster",
           "viewName": "Cluster",
-          "type": "string"
+          "type": "autocomplete",
+          "autocompleteType": "function",
+          "functionName": "listClustersAuto",
+          "description": "The cluster to run the task on. Choose from dropdown or provide by name from code.",
+          "placeholder": "mycluster",
+          "learnUrl": "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/clusters.html"
         },
         {
-          "name": "taskDefinition",
+          "name": "taskFamily",
+          "viewName": "Task Family",
+          "type": "autocomplete",
+          "autocompleteType": "function",
+          "functionName": "listTaskFamiliesAuto",
+          "description": "The task family of the task defintion to use.",
+          "placeholder": "mytask",
+          "learnUrl": "https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_RunTask.html"
+        },
+        {
+          "name": "taskDef",
           "viewName": "Task Definition",
-          "type": "string"
-        },
-        {
-          "name": "launchType",
-          "viewName": "Launch Type",
-          "type": "options",
-          "options" : [
-            {
-              "id": "FARGATE",
-              "name": "FARGATE"
-            },
-            {
-              "id": "EC2",
-              "name": "EC2"
-            }
-          ]
-        },
-        {
-          "name": "subnets",
-          "viewName": "Subnets (Array)",
-          "type": "string"
-        },
-        {
-          "name": "securityGroups",
-          "viewName": "Security Groups",
-          "type": "string"
-        },
-        {
-          "name": "assignPublicIp",
-          "viewName": "Assign Public IP",
-          "type": "options",
-          "options" : [
-            {
-              "id": "ENABLED",
-              "name": "ENABLED"
-            },
-            {
-              "id": "DISABLED",
-              "name": "DISABLED"
-            }
-          ]
+          "type": "autocomplete",
+          "autocompleteType": "function",
+          "functionName": "listTaskDefsAuto",
+          "description": "The specific version of the task defintion to create the task from. Choose from dropdown or provide in the format of taskFamily:taskVersion. Will use the latest revision of the task family if not specified.",
+          "placeholder": "mytask:1",
+          "learnUrl": "https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_RunTask.html"
         }
-        
+      ]
+    },
+    {
+      "name": "startTask",
+      "viewName": "Start Task",
+      "params": [
+        {
+          "name": "accessKeyId",
+          "viewName": "Access Key ID",
+          "type": "vault",
+          "description": "This is a parameter taken from the vault to access AWS",
+          "placeholder": "AKIAIOSFODNN7EXAMPLE",
+          "learnUrl": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey"
+        },
+        {
+          "name": "accessKeySecret",
+          "viewName": "Access Key Secret",
+          "type": "vault",
+          "description": "This is a parameter taken from the vault to access AWS",
+          "placeholder": "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
+          "learnUrl": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey"
+        },
+        {
+          "name": "region",
+          "viewName": "Region",
+          "type": "autocomplete",
+          "autocompleteType": "function",
+          "functionName": "listRegionsAuto",
+          "description": "Make the request in the specified region.",
+          "placeholder": "us-east-2",
+          "learnUrl": "https://aws.amazon.com/about-aws/global-infrastructure/regions_az/"
+        },
+        {
+          "name": "cluster",
+          "viewName": "Cluster",
+          "type": "autocomplete",
+          "autocompleteType": "function",
+          "functionName": "listClustersAuto",
+          "description": "The cluster to start the task on. Choose from dropdown or provide by name from code.",
+          "placeholder": "mycluster",
+          "learnUrl": "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/clusters.html"
+        },
+        {
+          "name": "containers",
+          "viewName": "Container Instances",
+          "type": "autocomplete",
+          "autocompleteType": "function",
+          "functionName": "listContainersAuto",
+          "description": "The container instance(s) to place the task on. Choose from dropdown or provide by ID or full ARN from code. Can enter multiple results by providing an array from code.",
+          "placeholder": "f6bbb147-5370-4ace-8c73-c7181ded911f",
+          "learnUrl": "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ECS_instances.html"
+        },
+        {
+          "name": "taskFamily",
+          "viewName": "Task Family",
+          "type": "autocomplete",
+          "autocompleteType": "function",
+          "functionName": "listTaskFamiliesAuto",
+          "description": "The task family of the task defintion to use.",
+          "placeholder": "mytask",
+          "learnUrl": "https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_StartTask.html"
+        },
+        {
+          "name": "taskDef",
+          "viewName": "Task Definition",
+          "type": "autocomplete",
+          "autocompleteType": "function",
+          "functionName": "listTaskDefsAuto",
+          "description": "The specific version of the task defintion to create the task from. Choose from dropdown or provide in the format of taskFamily:taskVersion. Will use the latest revision of the task family if not specified.",
+          "placeholder": "mytask:1",
+          "learnUrl": "https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_StartTask.html"
+        }
+      ]
+    },
+    {
+      "name": "stopTask",
+      "viewName": "Stop Task",
+      "params": [
+        {
+          "name": "accessKeyId",
+          "viewName": "Access Key ID",
+          "type": "vault",
+          "description": "This is a parameter taken from the vault to access AWS",
+          "placeholder": "AKIAIOSFODNN7EXAMPLE",
+          "learnUrl": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey"
+        },
+        {
+          "name": "accessKeySecret",
+          "viewName": "Access Key Secret",
+          "type": "vault",
+          "description": "This is a parameter taken from the vault to access AWS",
+          "placeholder": "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
+          "learnUrl": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey"
+        },
+        {
+          "name": "region",
+          "viewName": "Region",
+          "type": "autocomplete",
+          "autocompleteType": "function",
+          "functionName": "listRegionsAuto",
+          "description": "Make the request in the specified region.",
+          "placeholder": "us-east-2",
+          "learnUrl": "https://aws.amazon.com/about-aws/global-infrastructure/regions_az/"
+        },
+        {
+          "name": "cluster",
+          "viewName": "Cluster",
+          "type": "autocomplete",
+          "autocompleteType": "function",
+          "functionName": "listClustersAuto",
+          "description": "The cluster to stop one of the tasks running on it. Choose from dropdown or provide by name from code.",
+          "placeholder": "mycluster",
+          "learnUrl": "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/clusters.html"
+        },
+        {
+          "name": "task",
+          "viewName": "Task ID",
+          "type": "autocomplete",
+          "autocompleteType": "function",
+          "functionName": "listTasksAuto",
+          "description": "Stop the task running on the specified cluster with this ID.",
+          "placeholder": "1dc5c17a-422b-4dc4-b493-371970c6c4d6",
+          "learnUrl": "https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_StopTask.html"
+        },
+        {
+          "name": "reason",
+          "viewName": "Reason",
+          "type": "text",
+          "description": "The reason for stopping the task.",
+          "placeholder": "short description",
+          "learnUrl": "https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_StopTask.html"
+        }
+      ]
+    },
+    {
+      "name": "describeTaskDefinitions",
+      "viewName": "Describe Task Defintions",
+      "params": [
+        {
+          "name": "accessKeyId",
+          "viewName": "Access Key ID",
+          "type": "vault",
+          "description": "This is a parameter taken from the vault to access AWS",
+          "placeholder": "AKIAIOSFODNN7EXAMPLE",
+          "learnUrl": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey"
+        },
+        {
+          "name": "accessKeySecret",
+          "viewName": "Access Key Secret",
+          "type": "vault",
+          "description": "This is a parameter taken from the vault to access AWS",
+          "placeholder": "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
+          "learnUrl": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey"
+        },
+        {
+          "name": "region",
+          "viewName": "Region",
+          "type": "autocomplete",
+          "autocompleteType": "function",
+          "functionName": "listRegionsAuto",
+          "description": "Make the request in the specified region.",
+          "placeholder": "us-east-2",
+          "learnUrl": "https://aws.amazon.com/about-aws/global-infrastructure/regions_az/"
+        },
+        {
+          "name": "taskFamily",
+          "viewName": "Task Family",
+          "type": "autocomplete",
+          "autocompleteType": "function",
+          "functionName": "listTaskFamiliesAuto",
+          "description": "The task family of the task defintion to describe.",
+          "placeholder": "mytask"
+        },
+        {
+          "name": "taskDefs",
+          "viewName": "Task Definitions",
+          "type": "autocomplete",
+          "autocompleteType": "function",
+          "functionName": "listTaskDefsAuto",
+          "description": "The specific version of the task defintion(s) to return information about. Choose from dropdown or provide in the format of taskFamily:taskVersion. Will use the latest revision of the task family if not specified. Can enter multile values be passing as an array from code.",
+          "placeholder": "mytask:1"
+        }
       ]
     },
     {
@@ -136,66 +519,528 @@
       "params": [
         {
           "name": "accessKeyId",
-          "viewName": "Access key",
-          "type": "vault"
+          "viewName": "Access Key ID",
+          "type": "vault",
+          "description": "This is a parameter taken from the vault to access AWS",
+          "placeholder": "AKIAIOSFODNN7EXAMPLE",
+          "learnUrl": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey"
         },
         {
-          "name": "secretAccessKey",
-          "viewName": "Secret key",
-          "type": "vault"
+          "name": "accessKeySecret",
+          "viewName": "Access Key Secret",
+          "type": "vault",
+          "description": "This is a parameter taken from the vault to access AWS",
+          "placeholder": "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
+          "learnUrl": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey"
         },
         {
-          "name": "REGION",
+          "name": "region",
           "viewName": "Region",
-          "type": "options",
-          "options": [
-            {
-              "id": "us-east-1",
-              "name": "US East (N. Virginia)"
-            },
-            {
-              "id": "us-west-1",
-              "name": "US West (N. California)"
-            },
-            {
-              "id": "us-west-2",
-              "name": "US West (Oregon)"
-            },
-            {
-              "id": "ap-southeast-1",
-              "name": "Asia Pacific (Singapore)"
-            },
-            {
-              "id": "ap-southeast-2",
-              "name": "Asia Pacific (Sydney)"
-            },
-            {
-              "id": "ap-northeast-1",
-              "name": "Asia Pacific (Tokyo)"
-            },
-            {
-              "id": "eu-west-1",
-              "name": "EU (Ireland)"
-            },
-            {
-              "id": "sa-east-1",
-              "name": "South America (São Paulo)"
-            },
-            {
-              "id": "eu-central-1",
-              "name": "EU (Frankfurt)"
-            }
-          ]
+          "type": "autocomplete",
+          "autocompleteType": "function",
+          "functionName": "listRegionsAuto",
+          "description": "Make the request in the specified region.",
+          "placeholder": "us-east-2",
+          "learnUrl": "https://aws.amazon.com/about-aws/global-infrastructure/regions_az/"
         },
         {
           "name": "cluster",
           "viewName": "Cluster",
-          "type": "string"
+          "type": "autocomplete",
+          "autocompleteType": "function",
+          "functionName": "listClustersAuto",
+          "description": "The cluster to describe one of the tasks running on it. Choose from dropdown or provide by name from code.",
+          "placeholder": "mycluster",
+          "learnUrl": "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/clusters.html"
         },
         {
           "name": "tasks",
           "viewName": "Tasks IDs",
-          "type": "string"
+          "type": "autocomplete",
+          "autocompleteType": "function",
+          "functionName": "listTasksAuto",
+          "description": "Return information on the task(s) with the specified IDs. Can enter multiple values by providing as an array from code.",
+          "placeholder": "1dc5c17a-422b-4dc4-b493-371970c6c4d6"
+        }
+      ]
+    },
+    {
+      "name": "describeServices",
+      "viewName": "Describe Services",
+      "params": [
+        {
+          "name": "accessKeyId",
+          "viewName": "Access Key ID",
+          "type": "vault",
+          "description": "This is a parameter taken from the vault to access AWS",
+          "placeholder": "AKIAIOSFODNN7EXAMPLE",
+          "learnUrl": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey"
+        },
+        {
+          "name": "accessKeySecret",
+          "viewName": "Access Key Secret",
+          "type": "vault",
+          "description": "This is a parameter taken from the vault to access AWS",
+          "placeholder": "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
+          "learnUrl": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey"
+        },
+        {
+          "name": "region",
+          "viewName": "Region",
+          "type": "autocomplete",
+          "autocompleteType": "function",
+          "functionName": "listRegionsAuto",
+          "description": "Make the request in the specified region.",
+          "placeholder": "us-east-2",
+          "learnUrl": "https://aws.amazon.com/about-aws/global-infrastructure/regions_az/"
+        },
+        {
+          "name": "cluster",
+          "viewName": "Cluster",
+          "type": "autocomplete",
+          "autocompleteType": "function",
+          "functionName": "listClustersAuto",
+          "description": "The cluster the services belong to.",
+          "placeholder": "mycluster"
+        },
+        {
+          "name": "services",
+          "viewName": "Services",
+          "type": "autocomplete",
+          "autocompleteType": "function",
+          "functionName": "listServicesAuto",
+          "description": "The service(s) to describe. Choose from dropdown or provide by name from code. Can enter multiple values by passing as an array from code.",
+          "placeholder": "ecs-simple-service"
+        }
+      ]
+    },
+    {
+      "name": "describeContainers",
+      "viewName": "Describe Container Instances",
+      "params": [
+        {
+          "name": "accessKeyId",
+          "viewName": "Access Key ID",
+          "type": "vault",
+          "description": "This is a parameter taken from the vault to access AWS",
+          "placeholder": "AKIAIOSFODNN7EXAMPLE",
+          "learnUrl": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey"
+        },
+        {
+          "name": "accessKeySecret",
+          "viewName": "Access Key Secret",
+          "type": "vault",
+          "description": "This is a parameter taken from the vault to access AWS",
+          "placeholder": "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
+          "learnUrl": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey"
+        },
+        {
+          "name": "region",
+          "viewName": "Region",
+          "type": "autocomplete",
+          "autocompleteType": "function",
+          "functionName": "listRegionsAuto",
+          "description": "Make the request in the specified region.",
+          "placeholder": "us-east-2",
+          "learnUrl": "https://aws.amazon.com/about-aws/global-infrastructure/regions_az/"
+        },
+        {
+          "name": "cluster",
+          "viewName": "Cluster",
+          "type": "autocomplete",
+          "autocompleteType": "function",
+          "functionName": "listClustersAuto",
+          "description": "The cluster the services belong to.",
+          "placeholder": "mycluster"
+        },
+        {
+          "name": "containers",
+          "viewName": "Container Instances",
+          "type": "autocomplete",
+          "autocompleteType": "function",
+          "functionName": "listContainersAuto",
+          "description": "The container Instance(s) to describe. Choose from dropdown or provide by ID or ARN from code. Can enter multiple values by passing as an array from code.",
+          "placeholder": "1dc5c17a-422b-4dc4-b493-371970c6c4d6"
+        }
+      ]
+    },
+    {
+      "name": "describeClusters",
+      "viewName": "Describe Clusters",
+      "params": [
+        {
+          "name": "accessKeyId",
+          "viewName": "Access Key ID",
+          "type": "vault",
+          "description": "This is a parameter taken from the vault to access AWS",
+          "placeholder": "AKIAIOSFODNN7EXAMPLE",
+          "learnUrl": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey"
+        },
+        {
+          "name": "accessKeySecret",
+          "viewName": "Access Key Secret",
+          "type": "vault",
+          "description": "This is a parameter taken from the vault to access AWS",
+          "placeholder": "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
+          "learnUrl": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey"
+        },
+        {
+          "name": "region",
+          "viewName": "Region",
+          "type": "autocomplete",
+          "autocompleteType": "function",
+          "functionName": "listRegionsAuto",
+          "description": "Make the request in the specified region.",
+          "placeholder": "us-east-2",
+          "learnUrl": "https://aws.amazon.com/about-aws/global-infrastructure/regions_az/"
+        },
+        {
+          "name": "clusters",
+          "viewName": "Clusters",
+          "type": "autocomplete",
+          "autocompleteType": "function",
+          "functionName": "listClustersAuto",
+          "description": "The cluster(s) to describe. Choose from dropdown or provide by name from code. Can enter multiple values by passing as an array from code.",
+          "placeholder": "mycluster"
+        }
+      ]
+    },
+    {
+      "name": "deleteTaskDefinition",
+      "viewName": "Delete Task Defintion",
+      "params": [
+        {
+          "name": "accessKeyId",
+          "viewName": "Access Key ID",
+          "type": "vault",
+          "description": "This is a parameter taken from the vault to access AWS",
+          "placeholder": "AKIAIOSFODNN7EXAMPLE",
+          "learnUrl": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey"
+        },
+        {
+          "name": "accessKeySecret",
+          "viewName": "Access Key Secret",
+          "type": "vault",
+          "description": "This is a parameter taken from the vault to access AWS",
+          "placeholder": "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
+          "learnUrl": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey"
+        },
+        {
+          "name": "region",
+          "viewName": "Region",
+          "type": "autocomplete",
+          "autocompleteType": "function",
+          "functionName": "listRegionsAuto",
+          "description": "Make the request in the specified region.",
+          "placeholder": "us-east-2",
+          "learnUrl": "https://aws.amazon.com/about-aws/global-infrastructure/regions_az/"
+        },
+        {
+          "name": "taskFamily",
+          "viewName": "Task Family",
+          "type": "autocomplete",
+          "autocompleteType": "function",
+          "functionName": "listTaskFamiliesAuto",
+          "description": "The task family of the task defintion to delete.",
+          "placeholder": "mytask"
+        },
+        {
+          "name": "taskDef",
+          "viewName": "Task Definition",
+          "type": "autocomplete",
+          "autocompleteType": "function",
+          "functionName": "listTaskDefsAuto",
+          "description": "The specific version of the task defintion(s) to delete. Choose from dropdown or provide in the format of taskFamily:taskVersion. Will use the latest revision of the task family if not specified.",
+          "placeholder": "mytask:1"
+        }
+      ]
+    },
+    {
+      "name": "deleteService",
+      "viewName": "Delete Service",
+      "params": [
+        {
+          "name": "accessKeyId",
+          "viewName": "Access Key ID",
+          "type": "vault",
+          "description": "This is a parameter taken from the vault to access AWS",
+          "placeholder": "AKIAIOSFODNN7EXAMPLE",
+          "learnUrl": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey"
+        },
+        {
+          "name": "accessKeySecret",
+          "viewName": "Access Key Secret",
+          "type": "vault",
+          "description": "This is a parameter taken from the vault to access AWS",
+          "placeholder": "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
+          "learnUrl": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey"
+        },
+        {
+          "name": "region",
+          "viewName": "Region",
+          "type": "autocomplete",
+          "autocompleteType": "function",
+          "functionName": "listRegionsAuto",
+          "description": "Make the request in the specified region.",
+          "placeholder": "us-east-2",
+          "learnUrl": "https://aws.amazon.com/about-aws/global-infrastructure/regions_az/"
+        },
+        {
+          "name": "cluster",
+          "viewName": "Cluster",
+          "type": "autocomplete",
+          "autocompleteType": "function",
+          "functionName": "listClustersAuto",
+          "description": "The cluster the service belong to.",
+          "placeholder": "mycluster"
+        },
+        {
+          "name": "service",
+          "viewName": "Service",
+          "type": "autocomplete",
+          "autocompleteType": "function",
+          "functionName": "listServicesAuto",
+          "description": "The service to delete. Choose from dropdown or provide by name from code.",
+          "placeholder": "ecs-simple-service"
+        }
+      ]
+    },
+    {
+      "name": "deleteCluster",
+      "viewName": "Delete Cluster",
+      "params": [
+        {
+          "name": "accessKeyId",
+          "viewName": "Access Key ID",
+          "type": "vault",
+          "description": "This is a parameter taken from the vault to access AWS",
+          "placeholder": "AKIAIOSFODNN7EXAMPLE",
+          "learnUrl": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey"
+        },
+        {
+          "name": "accessKeySecret",
+          "viewName": "Access Key Secret",
+          "type": "vault",
+          "description": "This is a parameter taken from the vault to access AWS",
+          "placeholder": "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
+          "learnUrl": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey"
+        },
+        {
+          "name": "region",
+          "viewName": "Region",
+          "type": "autocomplete",
+          "autocompleteType": "function",
+          "functionName": "listRegionsAuto",
+          "description": "Make the request in the specified region.",
+          "placeholder": "us-east-2",
+          "learnUrl": "https://aws.amazon.com/about-aws/global-infrastructure/regions_az/"
+        },
+        {
+          "name": "cluster",
+          "viewName": "Cluster",
+          "type": "autocomplete",
+          "autocompleteType": "function",
+          "functionName": "listClustersAuto",
+          "description": "The cluster to delete. Choose from dropdown or provide by name from code.",
+          "placeholder": "mycluster"
+        }
+      ]
+    },
+    {
+      "name": "listServices",
+      "viewName": "List Services",
+      "params": [
+        {
+          "name": "accessKeyId",
+          "viewName": "Access Key ID",
+          "type": "vault",
+          "description": "This is a parameter taken from the vault to access AWS",
+          "placeholder": "AKIAIOSFODNN7EXAMPLE",
+          "learnUrl": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey"
+        },
+        {
+          "name": "accessKeySecret",
+          "viewName": "Access Key Secret",
+          "type": "vault",
+          "description": "This is a parameter taken from the vault to access AWS",
+          "placeholder": "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
+          "learnUrl": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey"
+        },
+        {
+          "name": "region",
+          "viewName": "Region",
+          "type": "autocomplete",
+          "autocompleteType": "function",
+          "functionName": "listRegionsAuto",
+          "description": "Make the request in the specified region.",
+          "placeholder": "us-east-2",
+          "learnUrl": "https://aws.amazon.com/about-aws/global-infrastructure/regions_az/"
+        },
+        {
+          "name": "cluster",
+          "viewName": "Cluster",
+          "type": "autocomplete",
+          "autocompleteType": "function",
+          "functionName": "listClustersAuto",
+          "description": "List services of the specified cluster.",
+          "placeholder": "mycluster"
+        },
+        {
+          "name": "maxResults",
+          "viewName": "Max Results",
+          "type": "string",
+          "description": "Maximum number of results to return. Default is 10. Possible values are 1-100.",
+          "placeholder": "10"
+        },
+        {
+          "name": "nextToken",
+          "viewName": "Next Token",
+          "type": "string",
+          "description": "In case of pagination, AWS will return nextToken that can be used to retrieve the next page of results."
+        }
+      ]
+    },
+    {
+      "name": "listContainers",
+      "viewName": "List Container Instances",
+      "params": [
+        {
+          "name": "accessKeyId",
+          "viewName": "Access Key ID",
+          "type": "vault",
+          "description": "This is a parameter taken from the vault to access AWS",
+          "placeholder": "AKIAIOSFODNN7EXAMPLE",
+          "learnUrl": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey"
+        },
+        {
+          "name": "accessKeySecret",
+          "viewName": "Access Key Secret",
+          "type": "vault",
+          "description": "This is a parameter taken from the vault to access AWS",
+          "placeholder": "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
+          "learnUrl": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey"
+        },
+        {
+          "name": "region",
+          "viewName": "Region",
+          "type": "autocomplete",
+          "autocompleteType": "function",
+          "functionName": "listRegionsAuto",
+          "description": "Make the request in the specified region.",
+          "placeholder": "us-east-2",
+          "learnUrl": "https://aws.amazon.com/about-aws/global-infrastructure/regions_az/"
+        },
+        {
+          "name": "cluster",
+          "viewName": "Cluster",
+          "type": "autocomplete",
+          "autocompleteType": "function",
+          "functionName": "listClustersAuto",
+          "description": "List container instances of the specified cluster.",
+          "placeholder": "mycluster"
+        },
+        {
+          "name": "maxResults",
+          "viewName": "Max Results",
+          "type": "string",
+          "description": "Maximum number of results to return. Default is 100. Possible values are 1-100.",
+          "placeholder": "100"
+        },
+        {
+          "name": "nextToken",
+          "viewName": "Next Token",
+          "type": "string",
+          "description": "In case of pagination, AWS will return nextToken that can be used to retrieve the next page of results."
+        }
+      ]
+    },
+    {
+      "name": "listClusters",
+      "viewName": "List Clusters",
+      "params": [
+        {
+          "name": "accessKeyId",
+          "viewName": "Access Key ID",
+          "type": "vault",
+          "description": "This is a parameter taken from the vault to access AWS",
+          "placeholder": "AKIAIOSFODNN7EXAMPLE",
+          "learnUrl": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey"
+        },
+        {
+          "name": "accessKeySecret",
+          "viewName": "Access Key Secret",
+          "type": "vault",
+          "description": "This is a parameter taken from the vault to access AWS",
+          "placeholder": "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
+          "learnUrl": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey"
+        },
+        {
+          "name": "region",
+          "viewName": "Region",
+          "type": "autocomplete",
+          "autocompleteType": "function",
+          "functionName": "listRegionsAuto",
+          "description": "Make the request in the specified region.",
+          "placeholder": "us-east-2",
+          "learnUrl": "https://aws.amazon.com/about-aws/global-infrastructure/regions_az/"
+        },
+        {
+          "name": "maxResults",
+          "viewName": "Max Results",
+          "type": "string",
+          "description": "Maximum number of results to return. Default is 100. Possible values are 1-100.",
+          "placeholder": "100"
+        },
+        {
+          "name": "nextToken",
+          "viewName": "Next Token",
+          "type": "string",
+          "description": "In case of pagination, AWS will return nextToken that can be used to retrieve the next page of results."
+        }
+      ]
+    },
+    {
+      "name": "listTaskDefs",
+      "viewName": "List Task Defenitions",
+      "params": [
+        {
+          "name": "accessKeyId",
+          "viewName": "Access Key ID",
+          "type": "vault",
+          "description": "This is a parameter taken from the vault to access AWS",
+          "placeholder": "AKIAIOSFODNN7EXAMPLE",
+          "learnUrl": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey"
+        },
+        {
+          "name": "accessKeySecret",
+          "viewName": "Access Key Secret",
+          "type": "vault",
+          "description": "This is a parameter taken from the vault to access AWS",
+          "placeholder": "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
+          "learnUrl": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey"
+        },
+        {
+          "name": "region",
+          "viewName": "Region",
+          "type": "autocomplete",
+          "autocompleteType": "function",
+          "functionName": "listRegionsAuto",
+          "description": "Make the request in the specified region.",
+          "placeholder": "us-east-2",
+          "learnUrl": "https://aws.amazon.com/about-aws/global-infrastructure/regions_az/"
+        },
+        {
+          "name": "maxResults",
+          "viewName": "Max Results",
+          "type": "string",
+          "description": "Maximum number of results to return. Default is 100. Possible values are 1-100.",
+          "placeholder": "100"
+        },
+        {
+          "name": "nextToken",
+          "viewName": "Next Token",
+          "type": "string",
+          "description": "In case of pagination, AWS will return nextToken that can be used to retrieve the next page of results."
         }
       ]
     },
@@ -205,61 +1050,51 @@
       "params": [
         {
           "name": "accessKeyId",
-          "viewName": "Access key",
-          "type": "vault"
+          "viewName": "Access Key ID",
+          "type": "vault",
+          "description": "This is a parameter taken from the vault to access AWS",
+          "placeholder": "AKIAIOSFODNN7EXAMPLE",
+          "learnUrl": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey"
         },
         {
-          "name": "secretAccessKey",
-          "viewName": "Secret key",
-          "type": "vault"
+          "name": "accessKeySecret",
+          "viewName": "Access Key Secret",
+          "type": "vault",
+          "description": "This is a parameter taken from the vault to access AWS",
+          "placeholder": "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
+          "learnUrl": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey"
         },
         {
-          "name": "REGION",
+          "name": "region",
           "viewName": "Region",
-          "type": "options",
-          "options": [
-            {
-              "id": "us-east-1",
-              "name": "US East (N. Virginia)"
-            },
-            {
-              "id": "us-west-1",
-              "name": "US West (N. California)"
-            },
-            {
-              "id": "us-west-2",
-              "name": "US West (Oregon)"
-            },
-            {
-              "id": "ap-southeast-1",
-              "name": "Asia Pacific (Singapore)"
-            },
-            {
-              "id": "ap-southeast-2",
-              "name": "Asia Pacific (Sydney)"
-            },
-            {
-              "id": "ap-northeast-1",
-              "name": "Asia Pacific (Tokyo)"
-            },
-            {
-              "id": "eu-west-1",
-              "name": "EU (Ireland)"
-            },
-            {
-              "id": "sa-east-1",
-              "name": "South America (São Paulo)"
-            },
-            {
-              "id": "eu-central-1",
-              "name": "EU (Frankfurt)"
-            }
-          ]
+          "type": "autocomplete",
+          "autocompleteType": "function",
+          "functionName": "listRegionsAuto",
+          "description": "Make the request in the specified region.",
+          "placeholder": "us-east-2",
+          "learnUrl": "https://aws.amazon.com/about-aws/global-infrastructure/regions_az/"
         },
         {
           "name": "cluster",
           "viewName": "Cluster",
-          "type": "string"
+          "type": "autocomplete",
+          "autocompleteType": "function",
+          "functionName": "listClustersAuto",
+          "description": "List tasks of the specified cluster.",
+          "placeholder": "mycluster"
+        },
+        {
+          "name": "maxResults",
+          "viewName": "Max Results",
+          "type": "string",
+          "description": "Maximum number of results to return. Default is 100. Possible values are 1-100.",
+          "placeholder": "100"
+        },
+        {
+          "name": "nextToken",
+          "viewName": "Next Token",
+          "type": "string",
+          "description": "In case of pagination, AWS will return nextToken that can be used to retrieve the next page of results."
         }
       ]
     }

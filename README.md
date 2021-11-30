@@ -1,46 +1,226 @@
-# kaholo-plugin-aws-ecs
-AWS ECR plugin for Kaholo
-This plugin is based on [aws-sdk API](https://www.npmjs.com/package/aws-sdk) and you can view all resources on [github](https://github.com/aws/aws-sdk-js)
+# kaholo-plugin-AWS-ECS
+Kaholo plugin for integration with AWS ECS API.
+
+## Settings
+1. Access Key ID (Vault) **Required if not it action** - The default AWS Access Key ID to use for authentication.
+2. Access Key Secret (Vault) **Required if not it action** - The default AWS Access Key secret to use for authentication.
+3. Region (String) **Required if not it action** - The ID of the default region to make requests on.
+
+## Method: Register Task Definition From JSON
+Register Task Definition From JSON
+
+### Parameters
+1. Access Key ID (Vault) **Required if not it settings** - The ID of the access key to use for authentication.
+2. Access Key Secret (Vault) **Required if not it settings** - The secret of the access key to use for authentication.
+3. Region (Autocomplete) **Required if not it settings** - Make the request in the specified region.
+4. Task Definition JSON (Text) **Required** - Create the task according to the parameters in the specified JSON. Can be provided either as a local path of a file on the agent, or pass as JS object from code.
+
+## Method: Create Service From JSON
+Create Service From JSON
+
+### Parameters
+1. Access Key ID (Vault) **Required if not it settings** - The ID of the access key to use for authentication.
+2. Access Key Secret (Vault) **Required if not it settings** - The secret of the access key to use for authentication.
+3. Region (Autocomplete) **Required if not it settings** - Make the request in the specified region.
+4. Service JSON (Text) **Required** - Create the service according to the parameters in the specified JSON. Can be provided either as a local path of a file on the agent, or pass as JS object from code.
+
+## Method: Update Service From JSON
+Update Service From JSON
+
+### Parameters
+1. Access Key ID (Vault) **Required if not it settings** - The ID of the access key to use for authentication.
+2. Access Key Secret (Vault) **Required if not it settings** - The secret of the access key to use for authentication.
+3. Region (Autocomplete) **Required if not it settings** - Make the request in the specified region.
+4. Service JSON (Text) **Required** - Update the service according to the parameters in the specified JSON. Can be provided either as a local path of a file on the agent, or pass as JS object from code.
+
+## Method: Create Cluster From JSON
+Create Cluster From JSON
+
+### Parameters
+1. Access Key ID (Vault) **Required if not it settings** - The ID of the access key to use for authentication.
+2. Access Key Secret (Vault) **Required if not it settings** - The secret of the access key to use for authentication.
+3. Region (Autocomplete) **Required if not it settings** - Make the request in the specified region.
+4. Cluster JSON (Text) **Required** - Create the cluster according to the parameters in the specified JSON. Can be provided either as a local path of a file on the agent, or pass as JS object from code.
+
+## Method: Create Basic Cluster
+Create Basic Cluster
+
+### Parameters
+1. Access Key ID (Vault) **Required if not it settings** - The ID of the access key to use for authentication.
+2. Access Key Secret (Vault) **Required if not it settings** - The secret of the access key to use for authentication.
+3. Region (Autocomplete) **Required if not it settings** - Make the request in the specified region.
+4. Name (String) **Required** - The name to give to the new cluster.
+
+## Method: Put Cluster Capacity Providers From JSON
+Put Cluster Capacity Providers From JSON
+
+### Parameters
+1. Access Key ID (Vault) **Required if not it settings** - The ID of the access key to use for authentication.
+2. Access Key Secret (Vault) **Required if not it settings** - The secret of the access key to use for authentication.
+3. Region (Autocomplete) **Required if not it settings** - Make the request in the specified region.
+4. Cluster Capacity Providers JSON (Text) **Required** - Update the capacity provider of the cluster according to the specified parameters. Can be provided either as a local path of a file on the agent, or pass as JS object from code.
 
 ## Method: Run Task
+Run Task
 
-**Description**
+### Parameters
+1. Access Key ID (Vault) **Required if not it settings** - The ID of the access key to use for authentication.
+2. Access Key Secret (Vault) **Required if not it settings** - The secret of the access key to use for authentication.
+3. Region (Autocomplete) **Required if not it settings** - Make the request in the specified region.
+4. Cluster (Autocomplete) **Required** - The cluster to run the task on. Choose from dropdown or provide by name from code.
+5. Task Family (Autocomplete) **Optional** - The task family of the task defintion to use.
+6. Task Definition (Autocomplete) **Required** - The specific version of the task defintion to to run. Choose from dropdown or provide in the format of taskFamily:taskVersion. Will use the latest revision of the task family if not specified.
 
-This method calls ECS [runTask](https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/ECS.html#runTask-property)
+## Method: Start Task
+Start Task
 
-**Parameters**
-1. **Access Key** - This is a parameter taken from the vault to access AWS
-2. **Secret Key** - This is a paramer taken from the vault to access AWS
-3. **Region** - Select a region from the appeard list.
-4. **Cluster** - The short name or full Amazon Resource Name (ARN) of the cluster on which to run your task. If you do not specify a cluster, the default cluster is assumed.
-5. **Task Definition** - The family and revision (family:revision) or full ARN of the task definition to run. If a revision is not specified, the latest ACTIVE revision is used.
-6. **Launch Type** - The launch type on which to run your task. For more information, see Amazon ECS Launch Types in the Amazon Elastic Container Service Developer Guide. If a launchType is specified, the capacityProviderStrategy parameter must be omitted.
-7. **Subnets (String | Array\<String\>)** - The subnets associated with the task or service. There is a limit of 16 subnets that can be specified per AwsVpcConfiguration.  All specified subnets must be from the same VPC.
-8. **Security Groups (String | Array\<String\>)** - The security groups associated with the task or service. If you do not specify a security group, the default security group for the VPC is used. There is a limit of 5 security groups that can be specified per AwsVpcConfiguration.  All specified security groups must be from the same VPC.
-9. **Assign Public IP** - Whether the task's elastic network interface receives a public IP address. The default value is DISABLED.
+### Parameters
+1. Access Key ID (Vault) **Required if not it settings** - The ID of the access key to use for authentication.
+2. Access Key Secret (Vault) **Required if not it settings** - The secret of the access key to use for authentication.
+3. Region (Autocomplete) **Required if not it settings** - Make the request in the specified region.
+4. Cluster (Autocomplete) **Required** - The cluster to start the task on. Choose from dropdown or provide by name from code.
+5. Container Instances (Autocomplete) **Required** - The container instance(s) to place the task on. Choose from dropdown or provide by ID or full ARN from code. Can enter multiple results by providing an array from code.
+6. Task Family (Autocomplete) **Optional** - The task family of the task defintion to use.
+7. Task Definition (Autocomplete) **Required** - The specific version of the task defintion to start. Choose from dropdown or provide in the format of taskFamily:taskVersion. Will use the latest revision of the task family if not specified.
 
+## Method: Stop Task
+Stop Task
+
+### Parameters
+1. Access Key ID (Vault) **Required if not it settings** - The ID of the access key to use for authentication.
+2. Access Key Secret (Vault) **Required if not it settings** - The secret of the access key to use for authentication.
+3. Region (Autocomplete) **Required if not it settings** - Make the request in the specified region.
+4. Cluster (Autocomplete) **Required** - The cluster to stop one of the tasks running on it. Choose from dropdown or provide by name from code.
+5. Task ID (Autocomplete) **Required** - Stop the task running on the specified cluster with this ID.
+6. Reason (Text) **Optional** - The reason for stopping the task.
+
+## Method: Describe Task Defintions
+Describe Task Defintions
+
+### Parameters
+1. Access Key ID (Vault) **Required if not it settings** - The ID of the access key to use for authentication.
+2. Access Key Secret (Vault) **Required if not it settings** - The secret of the access key to use for authentication.
+3. Region (Autocomplete) **Required if not it settings** - Make the request in the specified region.
+4. Task Family (Autocomplete) **Required** - The task family of the task defintion to describe.
+5. Task Definitions (Autocomplete) **Optional** - The specific version of the task defintion(s) to return information about. Choose from dropdown or provide in the format of taskFamily:taskVersion. Will use the latest revision of the task family if not specified. Can enter multile values be passing as an array from code.
 
 ## Method: Describe Tasks
+Describe Tasks
 
-**Description**
+### Parameters
+1. Access Key ID (Vault) **Required if not it settings** - The ID of the access key to use for authentication.
+2. Access Key Secret (Vault) **Required if not it settings** - The secret of the access key to use for authentication.
+3. Region (Autocomplete) **Required if not it settings** - Make the request in the specified region.
+4. Cluster (Autocomplete) **Required** - The cluster to describe one of the tasks running on it. Choose from dropdown or provide by name from code.
+5. Tasks IDs (Autocomplete) **Required** - Return information on the task(s) with the specified IDs. Can enter multiple values by providing as an array from code.
 
-This method calls ECS [describeTasks](https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/ECS.html#describeTasks-property)
+## Method: Describe Services
+Describe Services
 
-**Parameters**
-1. **Access Key** - This is a parameter taken from the vault to access AWS
-2. **Secret Key** - This is a paramer taken from the vault to access AWS
-3. **Region** - Select a region from the appeard list.
-4. **Cluster** - The short name or full Amazon Resource Name (ARN) of the cluster that hosts the task or tasks to describe. If you do not specify a cluster, the default cluster is assumed. This parameter is required if the task or tasks you are describing were launched in any cluster other than the default cluster.
-5. **Tasks IDs (String | Array\<String\>)** - A specific ID or a list of up to 100 task IDs or full ARN entries.
+### Parameters
+1. Access Key ID (Vault) **Required if not it settings** - The ID of the access key to use for authentication.
+2. Access Key Secret (Vault) **Required if not it settings** - The secret of the access key to use for authentication.
+3. Region (Autocomplete) **Required if not it settings** - Make the request in the specified region.
+4. Cluster (Autocomplete) **Required** - The cluster the services belong to.
+5. Services (Autocomplete) **Required** - The service(s) to describe. Choose from dropdown or provide by name from code. Can enter multiple values by passing as an array from code.
+
+## Method: Describe Container Instances
+Describe Container Instances
+
+### Parameters
+1. Access Key ID (Vault) **Required if not it settings** - The ID of the access key to use for authentication.
+2. Access Key Secret (Vault) **Required if not it settings** - The secret of the access key to use for authentication.
+3. Region (Autocomplete) **Required if not it settings** - Make the request in the specified region.
+4. Cluster (Autocomplete) **Optional** - The cluster the services belong to.
+5. Container Instances (Autocomplete) **Required** - The container Instance(s) to describe. Choose from dropdown or provide by ID or ARN from code. Can enter multiple values by passing as an array from code.
+
+## Method: Describe Clusters
+Describe Clusters
+
+### Parameters
+1. Access Key ID (Vault) **Required if not it settings** - The ID of the access key to use for authentication.
+2. Access Key Secret (Vault) **Required if not it settings** - The secret of the access key to use for authentication.
+3. Region (Autocomplete) **Required if not it settings** - Make the request in the specified region.
+4. Clusters (Autocomplete) **Required** - The cluster(s) to describe. Choose from dropdown or provide by name from code. Can enter multiple values by passing as an array from code.
+
+## Method: Delete Task Defintion
+Delete Task Defintion
+
+### Parameters
+1. Access Key ID (Vault) **Required if not it settings** - The ID of the access key to use for authentication.
+2. Access Key Secret (Vault) **Required if not it settings** - The secret of the access key to use for authentication.
+3. Region (Autocomplete) **Required if not it settings** - Make the request in the specified region.
+4. Task Family (Autocomplete) **Optional** - The task family of the task defintion to delete.
+5. Task Definition (Autocomplete) **Required** - The specific version of the task defintion(s) to delete. Choose from dropdown or provide in the format of taskFamily:taskVersion. Will use the latest revision of the task family if not specified.
+
+## Method: Delete Service
+Delete Service
+
+### Parameters
+1. Access Key ID (Vault) **Required if not it settings** - The ID of the access key to use for authentication.
+2. Access Key Secret (Vault) **Required if not it settings** - The secret of the access key to use for authentication.
+3. Region (Autocomplete) **Required if not it settings** - Make the request in the specified region.
+4. Cluster (Autocomplete) **Required** - The cluster the service belong to.
+5. Service (Autocomplete) **Required** - The service to delete. Choose from dropdown or provide by name from code.
+
+## Method: Delete Cluster
+Delete Cluster
+
+### Parameters
+1. Access Key ID (Vault) **Required if not it settings** - The ID of the access key to use for authentication.
+2. Access Key Secret (Vault) **Required if not it settings** - The secret of the access key to use for authentication.
+3. Region (Autocomplete) **Required if not it settings** - Make the request in the specified region.
+4. Cluster (Autocomplete) **Required** - The cluster to delete. Choose from dropdown or provide by name from code.
+
+## Method: List Services
+List Services
+
+### Parameters
+1. Access Key ID (Vault) **Required if not it settings** - The ID of the access key to use for authentication.
+2. Access Key Secret (Vault) **Required if not it settings** - The secret of the access key to use for authentication.
+3. Region (Autocomplete) **Required if not it settings** - Make the request in the specified region.
+4. Cluster (Autocomplete) **Required** - List services of the specified cluster.
+5. Max Results (String) **Optional** - Maximum number of results to return. Default is 10. Possible values are 1-100.
+6. Next Token (String) **Optional** - In case of pagination, AWS will return nextToken that can be used to retrieve the next page of results.
+
+## Method: List Container Instances
+List Container Instances
+
+### Parameters
+1. Access Key ID (Vault) **Required if not it settings** - The ID of the access key to use for authentication.
+2. Access Key Secret (Vault) **Required if not it settings** - The secret of the access key to use for authentication.
+3. Region (Autocomplete) **Required if not it settings** - Make the request in the specified region.
+4. Cluster (Autocomplete) **Required** - List container instances of the specified cluster.
+5. Max Results (String) **Optional** - Maximum number of results to return. Default is 100. Possible values are 1-100.
+6. Next Token (String) **Optional** - In case of pagination, AWS will return nextToken that can be used to retrieve the next page of results.
+
+## Method: List Clusters
+List Clusters
+
+### Parameters
+1. Access Key ID (Vault) **Required if not it settings** - The ID of the access key to use for authentication.
+2. Access Key Secret (Vault) **Required if not it settings** - The secret of the access key to use for authentication.
+3. Region (Autocomplete) **Required if not it settings** - Make the request in the specified region.
+4. Max Results (String) **Optional** - Maximum number of results to return. Default is 100. Possible values are 1-100.
+5. Next Token (String) **Optional** - In case of pagination, AWS will return nextToken that can be used to retrieve the next page of results.
+
+## Method: List Task Defenitions
+List Task Defenitions
+
+### Parameters
+1. Access Key ID (Vault) **Required if not it settings** - The ID of the access key to use for authentication.
+2. Access Key Secret (Vault) **Required if not it settings** - The secret of the access key to use for authentication.
+3. Region (Autocomplete) **Required if not it settings** - Make the request in the specified region.
+4. Max Results (String) **Optional** - Maximum number of results to return. Default is 100. Possible values are 1-100.
+5. Next Token (String) **Optional** - In case of pagination, AWS will return nextToken that can be used to retrieve the next page of results.
 
 ## Method: List Tasks
+List Tasks
 
-**Description**
-
-This method calls ECS [listTasks](https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/ECS.html#listTasks-property).
-
-**Parameters**
-1. **Access Key** - This is a parameter taken from the vault to access AWS
-2. **Secret Key** - This is a paramer taken from the vault to access AWS
-3. **Region** - Select a region from the appeard list.
-4. **Cluster** - The short name or full Amazon Resource Name (ARN) of the cluster that hosts the task or tasks to describe. If you do not specify a cluster, the default cluster is assumed. This parameter is required if the task or tasks you are describing were launched in any cluster other than the default cluster.
+### Parameters
+1. Access Key ID (Vault) **Required if not it settings** - The ID of the access key to use for authentication.
+2. Access Key Secret (Vault) **Required if not it settings** - The secret of the access key to use for authentication.
+3. Region (Autocomplete) **Required if not it settings** - Make the request in the specified region.
+4. Cluster (Autocomplete) **Required** - List tasks of the specified cluster.
+5. Max Results (String) **Optional** - Maximum number of results to return. Default is 100. Possible values are 1-100.
+6. Next Token (String) **Optional** - In case of pagination, AWS will return nextToken that can be used to retrieve the next page of results.

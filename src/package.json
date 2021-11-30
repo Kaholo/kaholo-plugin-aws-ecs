@@ -1,14 +1,14 @@
 {
-  "name": "kaholo-plugin-ecs",
-  "version": "1.0.0",
-  "description": "AWS ECS plugin for Kaholo",
-  "main": "app.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "Kaholo team (Matan Kadosh)",
-  "license": "ISC",
-  "dependencies": {
-    "aws-sdk": "2.771.0"
-  }
+	"name": "kaholo-plugin-amazon-aws-ecs",
+	"version": "1.0.0",
+	"description": "Kaholo plugin for integration with AWS ECS API.",
+	"main": "app.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"author": "Kaholo Group(Amit Alon)",
+	"license": "ISC",
+	"dependencies": {
+		"aws-sdk": "^2.1038.0"
+	}
 }
