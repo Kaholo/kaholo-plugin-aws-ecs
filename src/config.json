@@ -232,7 +232,7 @@
     },
     {
       "name": "putClusterCapacityProviders",
-      "viewName": "Put Cluster Capacity Providers From JSON",
+      "viewName": "Set Cluster Capacity Providers From JSON",
       "params": [
         {
           "name": "accessKeyId",

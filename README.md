@@ -51,7 +51,7 @@ Create Basic Cluster
 3. Region (Autocomplete) **Required if not it settings** - Make the request in the specified region.
 4. Name (String) **Required** - The name to give to the new cluster.
 
-## Method: Put Cluster Capacity Providers From JSON
+## Method: Set Cluster Capacity Providers From JSON
 Put Cluster Capacity Providers From JSON
 
 ### Parameters
