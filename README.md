@@ -7,7 +7,7 @@ Kaholo plugin for integration with AWS ECS API.
 3. Region (String) **Required if not it action** - The ID of the default region to make requests on.
 
 ## Method: Register Task Definition From JSON
-Register Task Definition From JSON
+Register a new task defentition using the provided parameters JSON. creates a new task defenition family and a new revision inside of it.
 
 ### Parameters
 1. Access Key ID (Vault) **Required if not it settings** - The ID of the access key to use for authentication.
@@ -16,7 +16,7 @@ Register Task Definition From JSON
 4. Task Definition JSON (Text) **Required** - Create the task according to the parameters in the specified JSON. Can be provided either as a local path of a file on the agent, or pass as JS object from code.
 
 ## Method: Create Service From JSON
-Create Service From JSON
+Create a new service using the provided parameters JSON.
 
 ### Parameters
 1. Access Key ID (Vault) **Required if not it settings** - The ID of the access key to use for authentication.
@@ -25,7 +25,7 @@ Create Service From JSON
 4. Service JSON (Text) **Required** - Create the service according to the parameters in the specified JSON. Can be provided either as a local path of a file on the agent, or pass as JS object from code.
 
 ## Method: Update Service From JSON
-Update Service From JSON
+Update a service using the provided parameters JSON.
 
 ### Parameters
 1. Access Key ID (Vault) **Required if not it settings** - The ID of the access key to use for authentication.
@@ -34,7 +34,7 @@ Update Service From JSON
 4. Service JSON (Text) **Required** - Update the service according to the parameters in the specified JSON. Can be provided either as a local path of a file on the agent, or pass as JS object from code.
 
 ## Method: Create Cluster From JSON
-Create Cluster From JSON
+Create a new cluster using the provided parameters JSON.
 
 ### Parameters
 1. Access Key ID (Vault) **Required if not it settings** - The ID of the access key to use for authentication.
@@ -43,7 +43,7 @@ Create Cluster From JSON
 4. Cluster JSON (Text) **Required** - Create the cluster according to the parameters in the specified JSON. Can be provided either as a local path of a file on the agent, or pass as JS object from code.
 
 ## Method: Create Basic Cluster
-Create Basic Cluster
+Create a new empty cluster with no special settings.
 
 ### Parameters
 1. Access Key ID (Vault) **Required if not it settings** - The ID of the access key to use for authentication.
@@ -52,7 +52,7 @@ Create Basic Cluster
 4. Name (String) **Required** - The name to give to the new cluster.
 
 ## Method: Set Cluster Capacity Providers From JSON
-Put Cluster Capacity Providers From JSON
+Update the "Capacity Providers" using the provided parameters JSON.
 
 ### Parameters
 1. Access Key ID (Vault) **Required if not it settings** - The ID of the access key to use for authentication.
@@ -61,7 +61,7 @@ Put Cluster Capacity Providers From JSON
 4. Cluster Capacity Providers JSON (Text) **Required** - Update the capacity provider of the cluster according to the specified parameters. Can be provided either as a local path of a file on the agent, or pass as JS object from code.
 
 ## Method: Run Task
-Run Task
+Run the specified task defenition on the specified cluster. Let AWS decide on which container to run the task, and be on charge of scheduling.
 
 ### Parameters
 1. Access Key ID (Vault) **Required if not it settings** - The ID of the access key to use for authentication.
@@ -72,7 +72,7 @@ Run Task
 6. Task Definition (Autocomplete) **Required** - The specific version of the task defintion to to run. Choose from dropdown or provide in the format of taskFamily:taskVersion. Will use the latest revision of the task family if not specified.
 
 ## Method: Start Task
-Start Task
+Run the specified task defenition on the specified cluster and container instances.
 
 ### Parameters
 1. Access Key ID (Vault) **Required if not it settings** - The ID of the access key to use for authentication.
@@ -84,7 +84,7 @@ Start Task
 7. Task Definition (Autocomplete) **Required** - The specific version of the task defintion to start. Choose from dropdown or provide in the format of taskFamily:taskVersion. Will use the latest revision of the task family if not specified.
 
 ## Method: Stop Task
-Stop Task
+Stop the specified task.
 
 ### Parameters
 1. Access Key ID (Vault) **Required if not it settings** - The ID of the access key to use for authentication.
@@ -95,7 +95,7 @@ Stop Task
 6. Reason (Text) **Optional** - The reason for stopping the task.
 
 ## Method: Describe Task Defintions
-Describe Task Defintions
+Describe specified task defenitions.
 
 ### Parameters
 1. Access Key ID (Vault) **Required if not it settings** - The ID of the access key to use for authentication.
@@ -105,7 +105,7 @@ Describe Task Defintions
 5. Task Definitions (Autocomplete) **Optional** - The specific version of the task defintion(s) to return information about. Choose from dropdown or provide in the format of taskFamily:taskVersion. Will use the latest revision of the task family if not specified. Can enter multile values be passing as an array from code.
 
 ## Method: Describe Tasks
-Describe Tasks
+Describe specified tasks running/stopped on a specific cluster.
 
 ### Parameters
 1. Access Key ID (Vault) **Required if not it settings** - The ID of the access key to use for authentication.
@@ -115,7 +115,7 @@ Describe Tasks
 5. Tasks IDs (Autocomplete) **Required** - Return information on the task(s) with the specified IDs. Can enter multiple values by providing as an array from code.
 
 ## Method: Describe Services
-Describe Services
+Describe specified services running on the specified cluster.
 
 ### Parameters
 1. Access Key ID (Vault) **Required if not it settings** - The ID of the access key to use for authentication.
@@ -125,7 +125,7 @@ Describe Services
 5. Services (Autocomplete) **Required** - The service(s) to describe. Choose from dropdown or provide by name from code. Can enter multiple values by passing as an array from code.
 
 ## Method: Describe Container Instances
-Describe Container Instances
+Describe specified container instances on the specified cluster. 
 
 ### Parameters
 1. Access Key ID (Vault) **Required if not it settings** - The ID of the access key to use for authentication.
@@ -135,7 +135,7 @@ Describe Container Instances
 5. Container Instances (Autocomplete) **Required** - The container Instance(s) to describe. Choose from dropdown or provide by ID or ARN from code. Can enter multiple values by passing as an array from code.
 
 ## Method: Describe Clusters
-Describe Clusters
+Describe all specified clusters. 
 
 ### Parameters
 1. Access Key ID (Vault) **Required if not it settings** - The ID of the access key to use for authentication.
@@ -144,7 +144,7 @@ Describe Clusters
 4. Clusters (Autocomplete) **Required** - The cluster(s) to describe. Choose from dropdown or provide by name from code. Can enter multiple values by passing as an array from code.
 
 ## Method: Delete Task Defintion
-Delete Task Defintion
+Delete specified revision of a task defenition.
 
 ### Parameters
 1. Access Key ID (Vault) **Required if not it settings** - The ID of the access key to use for authentication.
@@ -154,7 +154,7 @@ Delete Task Defintion
 5. Task Definition (Autocomplete) **Required** - The specific version of the task defintion(s) to delete. Choose from dropdown or provide in the format of taskFamily:taskVersion. Will use the latest revision of the task family if not specified.
 
 ## Method: Delete Service
-Delete Service
+Delete the specified servie.
 
 ### Parameters
 1. Access Key ID (Vault) **Required if not it settings** - The ID of the access key to use for authentication.
@@ -164,7 +164,7 @@ Delete Service
 5. Service (Autocomplete) **Required** - The service to delete. Choose from dropdown or provide by name from code.
 
 ## Method: Delete Cluster
-Delete Cluster
+Delete the specified cluster.
 
 ### Parameters
 1. Access Key ID (Vault) **Required if not it settings** - The ID of the access key to use for authentication.
@@ -173,7 +173,7 @@ Delete Cluster
 4. Cluster (Autocomplete) **Required** - The cluster to delete. Choose from dropdown or provide by name from code.
 
 ## Method: List Services
-List Services
+List all services in the specified cluster.
 
 ### Parameters
 1. Access Key ID (Vault) **Required if not it settings** - The ID of the access key to use for authentication.
@@ -184,7 +184,7 @@ List Services
 6. Next Token (String) **Optional** - In case of pagination, AWS will return nextToken that can be used to retrieve the next page of results.
 
 ## Method: List Container Instances
-List Container Instances
+List all container instances in the specified cluster.
 
 ### Parameters
 1. Access Key ID (Vault) **Required if not it settings** - The ID of the access key to use for authentication.
@@ -195,7 +195,7 @@ List Container Instances
 6. Next Token (String) **Optional** - In case of pagination, AWS will return nextToken that can be used to retrieve the next page of results.
 
 ## Method: List Clusters
-List Clusters
+List all clusters on connected account.
 
 ### Parameters
 1. Access Key ID (Vault) **Required if not it settings** - The ID of the access key to use for authentication.
@@ -205,7 +205,7 @@ List Clusters
 5. Next Token (String) **Optional** - In case of pagination, AWS will return nextToken that can be used to retrieve the next page of results.
 
 ## Method: List Task Defenitions
-List Task Defenitions
+List all task defenitions on connected account.
 
 ### Parameters
 1. Access Key ID (Vault) **Required if not it settings** - The ID of the access key to use for authentication.
@@ -215,7 +215,7 @@ List Task Defenitions
 5. Next Token (String) **Optional** - In case of pagination, AWS will return nextToken that can be used to retrieve the next page of results.
 
 ## Method: List Tasks
-List Tasks
+List all tasks running/stopped of the specified cluster.
 
 ### Parameters
 1. Access Key ID (Vault) **Required if not it settings** - The ID of the access key to use for authentication.
