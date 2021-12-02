@@ -94,7 +94,7 @@ Stop the specified task.
 5. Task ID (Autocomplete) **Required** - Stop the task running on the specified cluster with this ID.
 6. Reason (Text) **Optional** - The reason for stopping the task.
 
-## Method: Describe Task Defintions
+## Method: Describe Task Definitions
 Describe specified task defenitions.
 
 ### Parameters
