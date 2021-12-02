@@ -4,7 +4,7 @@
   "imgUrl": "logo.png",
   "execProgram": "node",
   "main": "app.js",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Kaholo plugin for integration with AWS ECS API.",
   "category": "CONTAINERS",
   "keywords": ["aws", "amazon", "code", "cloud", "cluster", "vm", "cli", "instance", "service", "elastic", "container", "compute"],

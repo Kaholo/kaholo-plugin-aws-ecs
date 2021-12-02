@@ -65,10 +65,10 @@ function listAuto(listFuncName, outputName, {fields = [], parseFunc}) {
 }
 
 function getParseArn(typeName){
-  const regex = new RegExp(`:${typeName}\/(.+)$`);
+  const regex = new RegExp(`:${typeName}\/(.+)$`, "g");
   return (arn) => {
     const matches = [...(arn.matchAll(regex))];
-    return getAutoResult(arn, matches[1] || arn)
+    return getAutoResult(arn, matches[0][1] || arn)
   }
 }
 
