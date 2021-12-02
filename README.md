@@ -33,7 +33,6 @@ Update a service using the provided parameters JSON.
 3. Region (Autocomplete) **Required if not it settings** - Make the request in the specified region.
 4. Service JSON (Text) **Required** - Update the service according to the parameters in the specified JSON. Can be provided either as a local path of a file on the agent, or pass as JS object from code.
 
-## Method: Create Cluster From JSON
 Create a new cluster using the provided parameters JSON.
 
 ### Parameters
@@ -68,8 +67,8 @@ Run the specified task defenition on the specified cluster. Let AWS decide on wh
 2. Access Key Secret (Vault) **Required if not it settings** - The secret of the access key to use for authentication.
 3. Region (Autocomplete) **Required if not it settings** - Make the request in the specified region.
 4. Cluster (Autocomplete) **Required** - The cluster to run the task on. Choose from dropdown or provide by name from code.
-5. Task Family (Autocomplete) **Optional** - The task family of the task defintion to use.
-6. Task Definition (Autocomplete) **Required** - The specific version of the task defintion to to run. Choose from dropdown or provide in the format of taskFamily:taskVersion. Will use the latest revision of the task family if not specified.
+5. Task Family (Autocomplete) **Optional** - The task family of the task definition to use.
+6. Task Definition (Autocomplete) **Required** - The specific version of the task definition to to run. Choose from dropdown or provide in the format of taskFamily:taskVersion. Will use the latest revision of the task family if not specified.
 
 ## Method: Start Task
 Run the specified task defenition on the specified cluster and container instances.
@@ -80,8 +79,8 @@ Run the specified task defenition on the specified cluster and container instanc
 3. Region (Autocomplete) **Required if not it settings** - Make the request in the specified region.
 4. Cluster (Autocomplete) **Required** - The cluster to start the task on. Choose from dropdown or provide by name from code.
 5. Container Instances (Autocomplete) **Required** - The container instance(s) to place the task on. Choose from dropdown or provide by ID or full ARN from code. Can enter multiple results by providing an array from code.
-6. Task Family (Autocomplete) **Optional** - The task family of the task defintion to use.
-7. Task Definition (Autocomplete) **Required** - The specific version of the task defintion to start. Choose from dropdown or provide in the format of taskFamily:taskVersion. Will use the latest revision of the task family if not specified.
+6. Task Family (Autocomplete) **Optional** - The task family of the task definition to use.
+7. Task Definition (Autocomplete) **Required** - The specific version of the task definition to start. Choose from dropdown or provide in the format of taskFamily:taskVersion. Will use the latest revision of the task family if not specified.
 
 ## Method: Stop Task
 Stop the specified task.
@@ -101,8 +100,8 @@ Describe specified task defenitions.
 1. Access Key ID (Vault) **Required if not it settings** - The ID of the access key to use for authentication.
 2. Access Key Secret (Vault) **Required if not it settings** - The secret of the access key to use for authentication.
 3. Region (Autocomplete) **Required if not it settings** - Make the request in the specified region.
-4. Task Family (Autocomplete) **Required** - The task family of the task defintion to describe.
-5. Task Definitions (Autocomplete) **Optional** - The specific version of the task defintion(s) to return information about. Choose from dropdown or provide in the format of taskFamily:taskVersion. Will use the latest revision of the task family if not specified. Can enter multile values be passing as an array from code.
+4. Task Family (Autocomplete) **Required** - The task family of the task definition to describe.
+5. Task Definitions (Autocomplete) **Optional** - The specific version of the task definition(s) to return information about. Choose from dropdown or provide in the format of taskFamily:taskVersion. Will use the latest revision of the task family if not specified. Can enter multile values be passing as an array from code.
 
 ## Method: Describe Tasks
 Describe specified tasks running/stopped on a specific cluster.
@@ -143,15 +142,15 @@ Describe all specified clusters.
 3. Region (Autocomplete) **Required if not it settings** - Make the request in the specified region.
 4. Clusters (Autocomplete) **Required** - The cluster(s) to describe. Choose from dropdown or provide by name from code. Can enter multiple values by passing as an array from code.
 
-## Method: Delete Task Defintion
+## Method: Delete Task Definition
 Delete specified revision of a task defenition.
 
 ### Parameters
 1. Access Key ID (Vault) **Required if not it settings** - The ID of the access key to use for authentication.
 2. Access Key Secret (Vault) **Required if not it settings** - The secret of the access key to use for authentication.
 3. Region (Autocomplete) **Required if not it settings** - Make the request in the specified region.
-4. Task Family (Autocomplete) **Optional** - The task family of the task defintion to delete.
-5. Task Definition (Autocomplete) **Required** - The specific version of the task defintion(s) to delete. Choose from dropdown or provide in the format of taskFamily:taskVersion. Will use the latest revision of the task family if not specified.
+4. Task Family (Autocomplete) **Optional** - The task family of the task definition to delete.
+5. Task Definition (Autocomplete) **Required** - The specific version of the task definition(s) to delete. Choose from dropdown or provide in the format of taskFamily:taskVersion. Will use the latest revision of the task family if not specified.
 
 ## Method: Delete Service
 Delete the specified servie.
