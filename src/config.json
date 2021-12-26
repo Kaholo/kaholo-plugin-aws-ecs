@@ -4,11 +4,24 @@
   "imgUrl": "logo.png",
   "execProgram": "node",
   "main": "app.js",
-  "version": "2.0.1",
+  "version": "2.0.4",
   "description": "Kaholo plugin for integration with AWS ECS API.",
-  "category": "CONTAINERS",
-  "keywords": ["aws", "amazon", "code", "cloud", "cluster", "vm", "cli", "instance", "service", "elastic", "container", "compute"],
-  "settings":[
+  "category": "DATABASE",
+  "keywords": [
+    "aws",
+    "amazon",
+    "code",
+    "cloud",
+    "cluster",
+    "vm",
+    "cli",
+    "instance",
+    "service",
+    "elastic",
+    "container",
+    "compute"
+  ],
+  "settings": [
     {
       "name": "accessKeyId",
       "viewName": "Access Key ID",
