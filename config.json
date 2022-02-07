@@ -4,7 +4,7 @@
   "imgUrl": "logo.png",
   "execProgram": "node",
   "main": "app.js",
-  "version": "2.0.4",
+  "version": "2.0.5",
   "description": "Kaholo plugin for integration with AWS ECS API.",
   "category": "DATABASE",
   "keywords": [
