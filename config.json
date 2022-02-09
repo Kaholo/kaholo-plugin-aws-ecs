@@ -4,7 +4,7 @@
   "imgUrl": "logo.png",
   "execProgram": "node",
   "main": "app.js",
-  "version": "2.0.4",
+  "version": "2.0.5",
   "description": "Kaholo plugin for integration with AWS ECS API.",
   "category": "DATABASE",
   "keywords": [
@@ -73,7 +73,7 @@
           "viewName": "Region",
           "type": "autocomplete",
           "autocompleteType": "function",
-          "functionName": "listRegionsAuto",
+          "functionName": "listRegions",
           "description": "Make the request in the specified region.",
           "placeholder": "us-east-2",
           "learnUrl": "https://aws.amazon.com/about-aws/global-infrastructure/regions_az/"
@@ -112,7 +112,7 @@
           "viewName": "Region",
           "type": "autocomplete",
           "autocompleteType": "function",
-          "functionName": "listRegionsAuto",
+          "functionName": "listRegions",
           "description": "Make the request in the specified region.",
           "placeholder": "us-east-2",
           "learnUrl": "https://aws.amazon.com/about-aws/global-infrastructure/regions_az/"
@@ -151,7 +151,7 @@
           "viewName": "Region",
           "type": "autocomplete",
           "autocompleteType": "function",
-          "functionName": "listRegionsAuto",
+          "functionName": "listRegions",
           "description": "Make the request in the specified region.",
           "placeholder": "us-east-2",
           "learnUrl": "https://aws.amazon.com/about-aws/global-infrastructure/regions_az/"
@@ -190,7 +190,7 @@
           "viewName": "Region",
           "type": "autocomplete",
           "autocompleteType": "function",
-          "functionName": "listRegionsAuto",
+          "functionName": "listRegions",
           "description": "Make the request in the specified region.",
           "placeholder": "us-east-2",
           "learnUrl": "https://aws.amazon.com/about-aws/global-infrastructure/regions_az/"
@@ -229,7 +229,7 @@
           "viewName": "Region",
           "type": "autocomplete",
           "autocompleteType": "function",
-          "functionName": "listRegionsAuto",
+          "functionName": "listRegions",
           "description": "Make the request in the specified region.",
           "placeholder": "us-east-2",
           "learnUrl": "https://aws.amazon.com/about-aws/global-infrastructure/regions_az/"
@@ -268,7 +268,7 @@
           "viewName": "Region",
           "type": "autocomplete",
           "autocompleteType": "function",
-          "functionName": "listRegionsAuto",
+          "functionName": "listRegions",
           "description": "Make the request in the specified region.",
           "placeholder": "us-east-2",
           "learnUrl": "https://aws.amazon.com/about-aws/global-infrastructure/regions_az/"
@@ -307,7 +307,7 @@
           "viewName": "Region",
           "type": "autocomplete",
           "autocompleteType": "function",
-          "functionName": "listRegionsAuto",
+          "functionName": "listRegions",
           "description": "Make the request in the specified region.",
           "placeholder": "us-east-2",
           "learnUrl": "https://aws.amazon.com/about-aws/global-infrastructure/regions_az/"
@@ -369,7 +369,7 @@
           "viewName": "Region",
           "type": "autocomplete",
           "autocompleteType": "function",
-          "functionName": "listRegionsAuto",
+          "functionName": "listRegions",
           "description": "Make the request in the specified region.",
           "placeholder": "us-east-2",
           "learnUrl": "https://aws.amazon.com/about-aws/global-infrastructure/regions_az/"
@@ -441,7 +441,7 @@
           "viewName": "Region",
           "type": "autocomplete",
           "autocompleteType": "function",
-          "functionName": "listRegionsAuto",
+          "functionName": "listRegions",
           "description": "Make the request in the specified region.",
           "placeholder": "us-east-2",
           "learnUrl": "https://aws.amazon.com/about-aws/global-infrastructure/regions_az/"
@@ -501,7 +501,7 @@
           "viewName": "Region",
           "type": "autocomplete",
           "autocompleteType": "function",
-          "functionName": "listRegionsAuto",
+          "functionName": "listRegions",
           "description": "Make the request in the specified region.",
           "placeholder": "us-east-2",
           "learnUrl": "https://aws.amazon.com/about-aws/global-infrastructure/regions_az/"
@@ -551,7 +551,7 @@
           "viewName": "Region",
           "type": "autocomplete",
           "autocompleteType": "function",
-          "functionName": "listRegionsAuto",
+          "functionName": "listRegions",
           "description": "Make the request in the specified region.",
           "placeholder": "us-east-2",
           "learnUrl": "https://aws.amazon.com/about-aws/global-infrastructure/regions_az/"
@@ -602,7 +602,7 @@
           "viewName": "Region",
           "type": "autocomplete",
           "autocompleteType": "function",
-          "functionName": "listRegionsAuto",
+          "functionName": "listRegions",
           "description": "Make the request in the specified region.",
           "placeholder": "us-east-2",
           "learnUrl": "https://aws.amazon.com/about-aws/global-infrastructure/regions_az/"
@@ -652,7 +652,7 @@
           "viewName": "Region",
           "type": "autocomplete",
           "autocompleteType": "function",
-          "functionName": "listRegionsAuto",
+          "functionName": "listRegions",
           "description": "Make the request in the specified region.",
           "placeholder": "us-east-2",
           "learnUrl": "https://aws.amazon.com/about-aws/global-infrastructure/regions_az/"
@@ -702,7 +702,7 @@
           "viewName": "Region",
           "type": "autocomplete",
           "autocompleteType": "function",
-          "functionName": "listRegionsAuto",
+          "functionName": "listRegions",
           "description": "Make the request in the specified region.",
           "placeholder": "us-east-2",
           "learnUrl": "https://aws.amazon.com/about-aws/global-infrastructure/regions_az/"
@@ -743,7 +743,7 @@
           "viewName": "Region",
           "type": "autocomplete",
           "autocompleteType": "function",
-          "functionName": "listRegionsAuto",
+          "functionName": "listRegions",
           "description": "Make the request in the specified region.",
           "placeholder": "us-east-2",
           "learnUrl": "https://aws.amazon.com/about-aws/global-infrastructure/regions_az/"
@@ -793,7 +793,7 @@
           "viewName": "Region",
           "type": "autocomplete",
           "autocompleteType": "function",
-          "functionName": "listRegionsAuto",
+          "functionName": "listRegions",
           "description": "Make the request in the specified region.",
           "placeholder": "us-east-2",
           "learnUrl": "https://aws.amazon.com/about-aws/global-infrastructure/regions_az/"
@@ -843,7 +843,7 @@
           "viewName": "Region",
           "type": "autocomplete",
           "autocompleteType": "function",
-          "functionName": "listRegionsAuto",
+          "functionName": "listRegions",
           "description": "Make the request in the specified region.",
           "placeholder": "us-east-2",
           "learnUrl": "https://aws.amazon.com/about-aws/global-infrastructure/regions_az/"
@@ -884,7 +884,7 @@
           "viewName": "Region",
           "type": "autocomplete",
           "autocompleteType": "function",
-          "functionName": "listRegionsAuto",
+          "functionName": "listRegions",
           "description": "Make the request in the specified region.",
           "placeholder": "us-east-2",
           "learnUrl": "https://aws.amazon.com/about-aws/global-infrastructure/regions_az/"
@@ -938,7 +938,7 @@
           "viewName": "Region",
           "type": "autocomplete",
           "autocompleteType": "function",
-          "functionName": "listRegionsAuto",
+          "functionName": "listRegions",
           "description": "Make the request in the specified region.",
           "placeholder": "us-east-2",
           "learnUrl": "https://aws.amazon.com/about-aws/global-infrastructure/regions_az/"
@@ -992,7 +992,7 @@
           "viewName": "Region",
           "type": "autocomplete",
           "autocompleteType": "function",
-          "functionName": "listRegionsAuto",
+          "functionName": "listRegions",
           "description": "Make the request in the specified region.",
           "placeholder": "us-east-2",
           "learnUrl": "https://aws.amazon.com/about-aws/global-infrastructure/regions_az/"
@@ -1037,7 +1037,7 @@
           "viewName": "Region",
           "type": "autocomplete",
           "autocompleteType": "function",
-          "functionName": "listRegionsAuto",
+          "functionName": "listRegions",
           "description": "Make the request in the specified region.",
           "placeholder": "us-east-2",
           "learnUrl": "https://aws.amazon.com/about-aws/global-infrastructure/regions_az/"
@@ -1082,7 +1082,7 @@
           "viewName": "Region",
           "type": "autocomplete",
           "autocompleteType": "function",
-          "functionName": "listRegionsAuto",
+          "functionName": "listRegions",
           "description": "Make the request in the specified region.",
           "placeholder": "us-east-2",
           "learnUrl": "https://aws.amazon.com/about-aws/global-infrastructure/regions_az/"
